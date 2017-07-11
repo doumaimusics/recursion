@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<style>
+	*{padding: 0;margin: 0;list-style: none;}
+	.inner{
+		width: 100%;
+		background: #fff;
+		padding: 100px 0;
+	}
+	.inner .section_data{
+		width: 100%;
+		height: 406px;
+		background: url(bj.png) no-repeat right 0;
+		
+	}
+	.content{
+		width: 1200px;
+		height: 100%;
+		margin: 0 auto;
+	}
+	.wraper_content{
+		padding: 75px 0 145px;
+	}
+	.wraper_content h1{
+		margin: 20px 0;
+	}
+	.cnwww-g{
+		width: 100%;
+		height:110px;
+		overflow: hidden;
+	}
+	.cnwww-g>div{
+		height: 100%;width: 24%;
+				float: left;
+	}
+	.cnwww-g>div:not(:last-child){
+		border-right: 1px solid #CCCCCC;
+	}
+
+	.cnwww-g>div .ullist{
+		height: 100%;
+	}
+		.cnwww-g>div .ullist li{
+		height: 100%;
+	}
+</style>
+<body>
+	<div class="inner">
+		<section class="section_data">
+			<div class="content">
+				<div class="wraper_content">
+					<h1>我们是以数据为驱动的社会化协同平台</h1>
+					<div class="cnwww-g">
+					  <div class="demo1">
+							<ul class="ullist">
+								<li>1</li>
+								<li>2</li>
+								<li>3</li>							
+							</ul>
+						</div>	
+                        <div class="demo2">
+							<ul class="ullist">
+								<li>1</li>
+								<li>2</li>
+								<li>3</li>							
+							</ul>
+						</div>	 
+						<div class="demo3">
+							<ul class="ullist">
+								<li>1</li>
+								<li>2</li>
+								<li>3</li>							
+							</ul>
+						</div>	 
+						<div class="demo4">
+							<ul class="ullist">
+								<li>1</li>
+								<li>2</li>
+								<li>3</li>							
+							</ul>
+						</div>	
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="jquery-1.11.1.js"></script>
+	<script>
+
+	function AutoScroll(obj) {
+		$(obj).find("ul:first").animate({
+			marginTop:'-110'
+		}, 500, function() {
+			$(this).css({
+				marginTop: "0px"
+			}).find("li:first").appendTo(this);
+		});
+	}
+	
+/*	
+ *递归写法：
+ * function a1(){
+		AutoScroll(".demo1");
+		setTimeout(function(){a2()},500);
+	}
+	function a2(){
+		AutoScroll(".demo2");
+		setTimeout(function(){a3()},500);
+	
+	}
+	function a3(){
+		AutoScroll(".demo3");
+		setTimeout(function(){a4()},500);
+	}
+	function a4(){
+		AutoScroll(".demo4");
+		setTimeout(function(){a1()},500);		
+	}*/
+	
+	/*简写*/
+	function loop(v){
+		if(!v||v==0){//调用的时候不传参数就用if写，调用的时传参数这里的if就可以不写
+		    v=1;			
+		}
+		AutoScroll('.demo'+v);
+		v++;
+		if (v>4) {
+			v=1;
+		}
+		setTimeout(function(){loop(v)},500);
+	}
+	
+	$(function(){
+	/*递归写法*/
+//	a1();
+	/*简写调用*/
+	loop();
+	});
+</script>
